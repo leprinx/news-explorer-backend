@@ -69,7 +69,7 @@ const deleteNews = (req, res, next) => {
       if (article.owner !== req.user._id) {
         throw new ErrorHandler('Not allowed to delete this article', FORBIDDEN);
       }
-      News.deleteOne(article._id)
+      News.findByIdAndDelete(article._id)
         .then((articleDeleted) => {
           res.status(SUCCES).send({ data: articleDeleted });
         })
