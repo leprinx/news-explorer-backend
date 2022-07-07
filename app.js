@@ -24,6 +24,4 @@ app.use(errors());
 app.use(errorLogger);
 app.use('', error);
 
-app.listen(PORT, () => {
-  console.log('App running on port 3000...');
-});
+
