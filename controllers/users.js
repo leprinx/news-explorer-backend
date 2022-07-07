@@ -42,7 +42,10 @@ const createUser = (req, res, next) => {
         password: hash,
       })
         .then((user) => {
-          res.status(CREATED_SUCCES).send({ data: user });
+          res.status(CREATED_SUCCES).send({
+            username: user.username,
+            email: user.email,
+          });
         })
         .catch((err) => {
           if (err.name === 'ValidationError') {
@@ -78,7 +81,7 @@ const login = (req, res, next) => {
           expiresIn: '7d',
         },
       );
-      res.status(SUCCES).send({ data: user, token });
+      res.status(SUCCES).send({ token });
     })
     .catch(() => {
       next(new ErrorHandler('Invalid email or password!!!', UNAUTHORIZED));
