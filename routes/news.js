@@ -26,11 +26,10 @@ const validateBodyInfo = Joi.object().keys({
   source: Joi.string().required(),
   link: Joi.string().required().custom(isUrl),
   image: Joi.string().required().custom(isUrl),
-  owner: Joi.string().required(),
 });
 
 const validateParams = Joi.object().keys({
-  articleId: Joi.string().alphanum().length(24),
+  articleId: Joi.string().hex().length(24),
 });
 
 router.get(

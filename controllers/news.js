@@ -21,8 +21,7 @@ const addNews = (req, res, next) => {
   const {
     keyword, title, text, date, source, link, image,
   } = req.body;
-  const owner = req.user._id;
-  News.findOne({ $and: [{ link: link }, { owner: owner }] })
+  News.findOne({ $and: [{ link: link }, { owner: req.user._id }] })
     .then((card) => {
       if (card) {
         throw new ErrorHandler('Article already added', CONFLICT_ERROR);
@@ -35,7 +34,7 @@ const addNews = (req, res, next) => {
           source,
           link,
           image,
-          owner,
+          owner: req.user._id,
         })
           .then((article) => res.status(CREATED_SUCCES).send({ data: article }))
           .catch((err) => {
