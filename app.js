@@ -23,7 +23,7 @@ app.use(requestLogger);
 app.use((req, res, next) => {
   res.header(
     'Access-Control-Allow-Origin',
-    'https://pep.students.nomoreparties.sbs',
+    'http://localhost:3000/',
   );
   res.header(
     'Access-Control-Allow-Headers',
