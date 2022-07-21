@@ -23,7 +23,7 @@ app.use(requestLogger);
 app.use((req, res, next) => {
   res.header(
     'Access-Control-Allow-Origin',
-    'http://localhost:3000/',
+    'https://pep.news.students.nomoredomainssbs.ru/',
   );
   res.header(
     'Access-Control-Allow-Headers',
@@ -32,6 +32,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   next();
 });
+
 app.use(cors());
 app.options('*', cors());
 app.use(rateLimiter);
