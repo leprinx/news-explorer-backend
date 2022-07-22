@@ -32,6 +32,18 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   next();
 });
+app.use((req, res, next) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://newsapi.org/v2',
+  );
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, authorization',
+  );
+  res.header('Access-Control-Allow-Methods', 'GET');
+  next();
+});
 
 app.use(cors());
 app.options('*', cors());
